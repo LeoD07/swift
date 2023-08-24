@@ -151,6 +151,8 @@ func runDanger(version dangerSwiftVersion: String, logger: Logger) throws {
 
     logger.debug("Running: \(swiftC) \(args.joined(separator: " "))")
 
+    logger.debug("[pwd] \(CommandLine.arguments)")
+
     // Create a process to eval the Swift file
     let proc = Process()
     proc.launchPath = swiftC
@@ -160,6 +162,7 @@ func runDanger(version dangerSwiftVersion: String, logger: Logger) throws {
        (cwdOptionIndex + 1) < CommandLine.arguments.count,
        let directoryURL = URL(string: CommandLine.arguments[cwdOptionIndex + 1])
     {
+        logger.debug("[pwd] changing dir")
         proc.currentDirectoryPath = directoryURL.absoluteString
     }
     proc.standardOutput = standardOutput
