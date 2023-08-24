@@ -47,9 +47,12 @@ public enum Runtime {
         let commandArgPath = CommandLine.arguments.first.map { arg in
             [arg.removingLastPathComponent()]
         } ?? []
+        print("[fuck] \(commandArgPath.joined(separator: ":"))")
 
         // Check and find where we can link to libDanger from
         let libPaths = commandArgPath + potentialLibraryFolders + depManagerDangerLibPaths
+
+
 
         func isTheDangerLibPath(path: String) -> Bool {
             fileManager.fileExists(atPath: path + "/libDanger.dylib") || // OSX
