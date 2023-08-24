@@ -41,6 +41,7 @@ func runDanger(version dangerSwiftVersion: String, logger: Logger) throws {
 
     let parser = CliArgsParser()
     let cliArgs = parser.parseCli(fromData: dslJSONData)
+    logger.debug("[pwd] \(FileManager.default.currentDirectoryPath)")
 
     // Exit if a dangerfile was not found at any supported path
     guard let dangerfilePath = cliArgs?.dangerfile ?? Runtime.getDangerfile() else {
