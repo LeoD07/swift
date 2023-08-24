@@ -165,6 +165,8 @@ func runDanger(version dangerSwiftVersion: String, logger: Logger) throws {
     proc.standardOutput = standardOutput
     proc.standardError = standardOutput
 
+    logger.debug("[pwd] \(proc.currentDirectoryPath)")
+
     proc.launch()
     proc.waitUntilExit()
 
